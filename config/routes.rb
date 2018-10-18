@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
 
-      get '/find_restaurants', to: 'restaurants#find_restaurants'
+      post '/find_restaurants', to: 'restaurants#find_restaurants'
 
       resources :restaurant_users
       resources :restaurants

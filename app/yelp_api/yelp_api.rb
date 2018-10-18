@@ -21,11 +21,16 @@ class YelpApi
         params = {
             term: term,
             location: location,
-            radius: radius,
+            # radius: radius,
             limit: limit
         }
         response = HTTP.auth("Bearer #{ENV['API_KEY']}").get(url, params: params)
-        puts response.parse
+        #byebug
+        if response.status.to_i < 300
+            response.parse
+        else 
+            return { error: "No Location Found" }
+        end
     end
 
 end
