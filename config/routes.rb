@@ -3,7 +3,7 @@ Rails.application.routes.draw do
     namespace :v1 do
 
       post '/find_restaurants', to: 'restaurants#find_restaurants'
-
+      post '/attributes', to: 'restaurants#attributes'
       resources :restaurant_users
       resources :restaurants
       resources :users

@@ -7,5 +7,9 @@ class Api::V1::RestaurantsController < ApplicationController
         render json: yelp.search("food", params[:location], limit) #turns into JSON string
     end
 
-
+    def attributes
+        #byebug
+        yelp = YelpApi.new
+        render json: yelp.specific_restaurant(params[:id])
+    end
 end

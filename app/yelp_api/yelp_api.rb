@@ -15,7 +15,7 @@ class YelpApi
     end
 
     #method will take my initial url and add to
-    #the it the params we are passing as arguments
+    #the params we are passing as arguments
     def search(term, location, radius, limit = 10)
         url = "#{@api_host}#{@search_path}"
         params = {
@@ -33,4 +33,10 @@ class YelpApi
         end
     end
 
+    def specific_restaurant(id)
+        url = "https://api.yelp.com/v3/businesses/#{id}"
+        response = HTTP.auth("Bearer #{ENV['API_KEY']}").get(url)
+        response.parse
+    end
+    
 end
